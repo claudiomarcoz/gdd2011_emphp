@@ -3,11 +3,11 @@ $metodos = new stdClass();
 $metodos->canivete = array(
 'dic' => function($string,array $dic)
 {
-	if(is_array($string))
-	{
-		$string= implode(" ",$string);
-	}
-	return array_unique(explode(" ", strtr($string,$dic['from'],$dic['to'])));	
+    if(is_array($string))
+    {
+        $string= implode(" ",$string);
+    }
+    return array_unique(explode(" ", strtr($string,$dic['from'],$dic['to'])));	
 },
 'ordenar' => function ($texto,$alfabeto,$alfabeto_padrao,$dic)
 {
@@ -18,31 +18,69 @@ $metodos->canivete = array(
 },
 'numeros' => function($texto,$alfabeto,$alfabeto_padrao,$dic,$fator,$div)	
 {
-	$num = $dic($texto,array('from'=>$alfabeto,'to'=>$alfabeto_padrao));
-	$resposta = array_map(function($value) use($fator,$div){ $numero = (double) base_convert( strrev($value), 20, 10); if(($numero >= $fator) and (fmod($numero,$div) <= 0 )){ return $numero; } },$num);		
-	return count(array_filter($resposta));
+    $num = $dic($texto,array('from'=>$alfabeto,'to'=>$alfabeto_padrao));
+    $resposta = array_map(function($value) use($fator,$div){ $numero = (double) base_convert( strrev($value), 20, 10); if(($numero >= $fator) and (fmod($numero,$div) <= 0 )){ return $numero; } },$num);		
+    return count(array_filter($resposta));
 },);
 class carregar{
-	private $canivete,$texto_original,$alfabeto_googol,$alfabeto_romano,$fatorMinBeleza,$divisorBeleza;
-	public static function __init(stdClass $apoio,$texto,$alfabeto,$fator,$div)
-	{
-		return new self($apoio,$texto,$alfabeto,$fator,$div);
-	}
-	public function __construct(stdClass $apoio,$texto,$alfabeto,$fator,$div)
-	{
-		$this->canivete=$apoio->canivete;
-		$this->texto_original=$texto; //"vblpqqd zdwcq rfn tjfwg wjxtm zvhmr hshbp pknf bqz qmxvr pmb mnctg vzllg lbnxtjx pwbpvxp gqkzqdg fggmfnn wnmmxv zbngrt ptw nzth tjnsh ngbp nlxgsl qzzljcbl fvvpn sztbbxf pzlxhzsd xwrbcqn sdp ftqx xbjc vbjzzzwx czxlkbvl phn kpkgwqd vvxjvx czqm pxdnrgz ccn bpcgtb fjbmrp hgjkcg vmzkh kwxkfdl rhwdwsnr phd rxjkx lkrh zxv frcb pjql pbzq nzdnnbln bcjgfwx hkfhlnb bmznv rxvcmpj ldvgfj rhrwtbxz btcrxz kpvbpxkf tfq zhr nsnfckc mxrvz trhrhzc xwpsf twhvzzl tltdvssw vwjdr shxpddv jhfnc gcvk hgjnjzwl chp mcmvl scgprwx njw vcwlqfj lsdkjtrz zzxtz txlvllsl lfzwq mljfh csfj dbhdnrpt shndbwpn sndmxp fwv qqhgkm hwpmpdlh whznppqp gps rkb fqxf vcmbqfz qpjhsjh nbrdtk lvswgwtb wrlswk wxgkrtj cvxfwnvp qdzblksb nhwx tszntkg lkp dwwhw nqbnkvsq vbnsfwmm pssgwrpx rjrfwm brw mszkxwlf qgchjd vnvthbds ddsrcmmr nkrtkpmg vmchgg tfwxcp zxbqskvn sxv pdx knblbxpt nsrjhm ksbkdrg pcq nhhlvtvf xvgrz tjqz fpd vmbplfn psfwd lfnc nlsccpb cfgt kwtqqq rvthks gvmmszph dftpln rvcg vzqjdghc kzwrk fmfsfbjn lhp rknknvp jnbtjd tqsc swpbxvt wkdwjvxn pfhcfkbw sfhlzqm zzcbkdf mdbv rwbhz wfmg bjdcb glwrl qmz gmqqnj wdrhp sbkrwrn bgkxdlzk hpzs nlltvhf lwwvpc thhgggbj ndfdfrc gmvtw bsllzz wfwsxdj fqhwkf nfddlrxr zrqxv zqw nsgpnzm ghwcdrvw vhchgmfn nxmjwjlm pqjnm mkdr gchbtqql qdnzlwkj xlxkk kbzdfmp nck xgh xmrltdg mkm ltncbdjr ckrdmg pkftms htpdm zqnpfp hlbph kjnbjn php vhxsdzkv krp rnjqfp jscz htdmt zfbpssxw bsgqpr bqv gpsgr qfc rgzntbk kzfgjw fvfpwhzl nxl crvrcc vwvpb jcnklsw tjjcgr mbkz zzs tjr gbgnsldj lskmnr gjssrc tkmwp fmx pxqbr ndh sthntlzb blr xgf zggj bkbtc pmt ljrh jgjlgsw rhjv rdpdqdh jzvksjg drd gmqtsr xln dlxlskr gjwwnb jbz sgsf zfmv nbrtq zpsj xjsqccgq qvwdnslr mtvm qtmv fwzt nkhqnfwc zldnc qshkshl tvz rhh wqc wll smxtw plk dspkmj fnqzbdl xthkgpb khkphvvk gbzhhz rvswlq jsqwsv nnvxtmj jwznrvr rzqhgg ffvldnv qqmzws xqj gdlgt wbwk tvvxgbpp xnvvtbvq cnjxs rrxx pqfmnp gsjflrds lhsshv dmdx hgpj wflnkrz gqflsj cjclpj gff zvnvflw kzdp xhpsmjvd tncbxnq xgrkh rvthdgqn xpj lhqdvpfc cpx vvwgrbgs sjpsj rcpg wztzg sntnjprh rglxsljf xqlbcdk wqhbth jlhnp rbp ngwcxm vkwnt gqft qtl cqnz nqcsb rhcc bnzhcp zrkjjh vql cvlgzw ctsww dwvm fvh qtg flnfnl ztvsh zvgst ntkvpzdp strgw xkwcxh bcp mxnfxg xkwjqjx vdkrqjk kfzgnl ntxmxxd tlxm bfq hjtw tvflbwq qcwm gfkhtxjz tqpvxhmd bhldtqlt xtpm tcw zhg kzzlvgdb qlxjs wsmm plmd kwbmz cgghz bqgtgr hqlks nfrsrlp bsp hwwd ltcwcm wphvb nmd whwlpqk vczvngj bprd phdzq ljwnvvwn tqhfrjr wnzddb hdg kvqb mzgrn rfbn ssnmlbp rjgcnh xrq lsf wgcj xttrzk xfh xtvrlf rshbqphr wtphvbdt sknrjf rqxqhjgh dgxpf lzw xxhxstc rkxkpx xlps zfxxfkn qzwhfl kkrkgt mfd jsd vwzn ltvqqqb lwdtpwvr trpcnlnw jjlqqgr xpvjhfq gfhb dpsmfv nfrwmb gxgp msvxcpq pcqrp zpqtqvr pwktmj vmzwj vxd hvzn kkjc wcjfp rfsjvvmp smfcqxw pnr ljff xpm fpq rwnktq lgfj hrsgcvg trpdqw hwv htmml rzpvbk xlxnjwdh krdb pzpt lhfsttz bfq gxwn hgftlkrd hnsblvd gqsxvvjj vkfjcj xtbq cdzb vgshf mxqgntc nmq wtbg wbtxmrmr kkvsvz hcskbxn sjgmpgrj tdw ffs pvq qrkkr cdbnrks wlrkhxhm mgwj rprhlc czg srg jxrmm nqmvb xcn pbggtg msjmbx rtfhxm nvbgpxt bsl zxzs ftjb nlmvhnhc zpxj rxbljdf dghf snnlkl gmpcp cqdpnmpf bthcpgt xpjfwvvp ccq lwhmjgt hrj fwrk ftl mbx xskcq ttscb gddtd tkqxvj dvkzwfb vnzjxvs ztcn zmhrmtsw szqr xnrrzj kxnbldpm rxvmqgs nbhnfm lhnvl jfw dgct qpvspj jghph brkqsg pvjt rbrlp hpfcjfdh qhrkc hrqxgrgc rwxv xzmz npzgrxzp jwbn tftxx qtdjskwj mgpvv kxkh dvxqfg sss vpmd pptqzq ctqsgb sxl gjwr lgxm phq cwhjmk mwxgpflz bmpjp mqgfbd jqbxkm mckz qdwbz nfdxzpk ddkqt rkmkvrz dkjr fxtfccw jcsj wggdgxl hmh llntrp rnrqws ndkclhp xhjzxr nphpj mpnmn bbbkx nrfpftz ngmrh xdqlb zpxxnmm qvgxvcsp qltc tgbhzjfd mmpnbls skxqm dptskbk gppwcvm fxmvljh hjdjv mmjqzgbn fbjdwnt vdfd dtrvmfn htzp wgbkzwx mgpnjxlc lkdkp rxqrlrgq fqgfzmc ckkbv nllkpjh kqzljw skpqcwpf pznw kfntmcvd fkmvwp jqldrkq dccc zhtslwth dpstk lwscwq hjj rlfzd zvtbmzpr bhr bxjjlxxr xpb plgfr knqqw gzb nzqm jxln sbhhxn xtg zzcs vslj swd lfs klcx ljrbgm lxvnm snlpknkr rpcv crtsx";
-		$this->alfabeto_googol=$alfabeto;//"dcxkjsmvrlgftwpqznbh";
-		$this->fatorMinBeleza=$fator;//875106;
-		$this->divisorBeleza=$div;
-		$this->alfabeto_romano='abcdefghijklmnopqrstuvxyz';
-		return $this;
-	}
-	public function carrega()
-	{
-	$order = $this->canivete['ordenar']($this->texto_original,$this->alfabeto_googol,$this->alfabeto_romano,$this->canivete['dic']);
-	echo $order;
-	echo "\n\n  esse foi o texto ordenado e agora:\n ",$this->canivete['numeros']($order,$this->alfabeto_googol,'0123456789'.$this->alfabeto_romano,$this->canivete['dic'],$this->fatorMinBeleza,$this->divisorBeleza ),"\n os numeros";
-	}	 
+    private $canivete,$texto_original,$alfabeto_googol,$alfabeto_romano,$fatorMinBeleza,$divisorBeleza;
+    public static function __init(stdClass $apoio,$texto,$alfabeto,$fator,$div)
+    {
+    return new self($apoio,$texto,$alfabeto,$fator,$div);
+    }
+    public function __construct(stdClass $apoio,$texto,$alfabeto,$fator,$div)
+    {
+    $this->canivete=$apoio->canivete;
+    $this->texto_original=$texto; 
+    $this->alfabeto_googol=$alfabeto;
+    $this->fatorMinBeleza=$fator;
+    $this->divisorBeleza=$div;
+    $this->alfabeto_romano='abcdefghijklmnopqrstuvxyz';
+    return $this;
+    }
+    public function carrega()
+   {
+    $order = $this->canivete['ordenar']($this->texto_original,$this->alfabeto_googol,$this->alfabeto_romano,$this->canivete['dic']);
+    echo $order;
+    echo "\n\n  esse foi o texto ordenado e agora:\n ",$this->canivete['numeros']($order,$this->alfabeto_googol,'0123456789'.$this->alfabeto_romano,$this->canivete['dic'],$this->fatorMinBeleza,$this->divisorBeleza ),"\n os numeros";
+    }	 
 }
-carregar::__init($metodos,"fwkp cxlzh pbzkzz vgpkhp gwpw zggswp xnwm dhxhxs rjgdpwg zfwbqf lvxk rtrxmn ljz flmjks ssgcff wkgsjfjg rfz lfxn vwl jtf zcgtn qfqk crtfv hdlhx bxts cqqwf xnz wjrbkvx cxxwbj ktrpdnvg stlwv mkkkg gfrttnc rwmtlcgx tmlxw grrfzjdc gzsjbl ljgh fmq jgslrqgl crnt dzztc dhmlmx pjwhmzrb nsttfp wbqnsz kgpv bpglstfp xtlsgrnz qntwgqf vxhmj wjmgvjw bcxkx rtxhtwjk mmxvb mnzz bgp tcvhvk swqgwn tpt csm gzrprs xsd svsqdjn dtfbdxs rxc ctgs hcsdlxs bkqj rkz hpcf npw kbkk pdg zxcph qcjkmpm xbhjz dcr gdtkvl vstwzmz lmctnhvw pzj gkgxqcg jlrcjfxt vbvw xccx gcl lmnbh zncnwz jbqqt sff grdfmq ppdl wvfr rzd xvv mzgkk cqtkm chszh grvjwcgn wtdkw xkn xnvqkp zwxs ljnjgcvj rdbchr vxrrc hfwsz nqt wsmmdk vxzwvrzq rvtnzpmv pfpq pwxrw hzdhcz rvts wmnxmh gjr mvrxpz bzsbfn hsr llnxhl rdqzhbxn prczfgdv csdsf qzzmqgp wzhdj sdnts mkrgqr xvvjf jgs hrdbrj pxszszp mjjzb pxlcqp bmrjjs kstmxqm nltp vfbkpnl ccgrxc xlhdd xgsm khkttd jlhzkkc lfwhmqp pxdqjxsh bjmlgnfh kfl zjvmq wqtb fwx rwtznp gjpw nvmx wfx sntbbjg nbq rkpjgx pcml vvh khkfqx hmlccvl stbblb czt pql gsnmvrvt fdrxzkw gzb dfw srhpgsjg hfxjfqb vjwdmdtv wffb kwqxp sxlf qzfjc hss rzzcbvg zrvmhqvp lnmx wfbt jvjhm xmmwr hwb grz mzltffc mnwx zhckw dhxpf dkgvm vsl pcxhlqmv vpwdstmp fxjtrrw vvqv dgrscjmt ffkf qnkqn rppnvdd cvtrbq xrmn ktgb svj kkwqln lhrhkb qbjhjmx xvxcbbsc wvnt znxd dpl jkxb tlwc smrsmwvx ltsjd hvtrwhf lrf wwmbjbl xwwk bmqnl xxnjnzd cwvhx rxggdmcp mrqhjp lkmqjg chqnztk lpvjtl dmcb xlfvx zpgtdfkf ptbtgdj dsbl sghdnv gszq dgq fndf cjcjh rldsf fwjrrrxl rxcs tnmshg psfjs kfft kqxtnt hgf mxkkl lldwtfqr hzbnb flj htqlrvzm lcr rsmfxgm fmncl hlmjr qshfhtl bcvmdnbr qvvvd sqwsvzl ftscmjsf mwkddmwn ffjm hslpw mlmkj vlbkp tgfg xsqms bvbln sdcrstgl ljw bzxpt hlb zhkzr bfmhlcd gjbtkb msmjpx mxwp dlrzctzm hclr vgsk hgxfxcmg bkh jrqzh wlrcgxxm kqtpcfd rtxzvqf llqhm vppvmc tmxsgnsj kqrnx tsdlcxnx chcnzfg dnf vxjd xdlxdcjz fvjndb tqsfmdh cggdz sjlkqxwf tczrzmn pmhcxqtv qrlpsc jwfdtxcp wfbnwrk fjt njtzt hwzvpvx fqdpsv wjg qvgxfmmk sldn nmvplk smnbmsfm cbvcsjj npghjddw bxbhjfjx ccpfdqx kcrccmfr nglzt sjdllsz dkk dpmqvj wkd kgpjvg ckmmkc ptzk ntpw kzpgqlrk nrlxb pmbfvnhw cvhvr cvqmtj gmtpprwm lwvddwfk qbqx gdn bmrrwdk lnglzfk qmdsccfz ddbxbpj jrjrlknp wgvh tcd cbhvgp drpz bcl crh nsbcqv gwdr lpnxgzwd shnd rffqg krhxcxql vmw kqzf pxkclht lgbbddd hvqdmrjr thgvzsmq knsw vcfnbm vnwb mbrkbt xfjl dclrh sbdvkg xxz pmjzlx zshzfslz dqb qgg njxtd cljtsl cfchlpl szfpnsj cpsbqpcx drmjm hfzvbgx lfndmtx sxb fpmjv hhxpx jjtsxfwd tstlf ptxvvtk lkrlrwcs jfpsqx dth zvcqvgv gxjthhc wjrptcf smck bjtwkl sbxtbdp qnkm cmzq wrwkkkq bpmcd gpzvv xzlkln jrp wpt smqpzr wtdk bwvs jxg cst wrnk tdpxq xxdbdzcc kfswx grpjch svjnnh ncdvrvtn dgqg bmnjcp lhx bgj whrrj xfgsvgt vpmpnb pnlqpzd xvhrtp wwwcvgw gcb pmkrf rfzthjpn qwlnssn vdm hhhk vzhznghb tzhw dtbb wzkdhrpg mbt kgkpxz bdnjn gxpwmvtq rkhq rtwtcww wzvq xmr jjpdft mdq gmxnzt dgcsmlgb qtwmqgdb dlw mnq jmcgqqf mcjhb nqmtq ptr gbzcvmrw mdkgtq xtjxzwf zqtfjzdt dxw zvmsd rfsppg tlswss lfdbcd fwwkw mqkhvwq sqksrz mzbx vhnpcqb hdh vzpmq hqlfvjdj kprhfmd vnwmvdt bxjwdjv hnc mnbkngg bplcm vhxct vppptmg jplqsq zvxdgjnh lkxwwg zzrtjnn tvjlg lshpnb csnl fbng xqcd cff hqzn mbklxsbz sgjts pkbdgds khsxwrkz jqwklmch hgdx kwk qqb kzgmlxw nmpb vmpsqkh hrc hrlkpd flqrslr sxctxfkh dzh dbtnhf mtfxggk knww zsjpf fdgcmfhl zhrb jxqhtksl dswwbkgk tcdqwh wbwsgqs rfcmv rwfj lts dnwzzw tjpvsr cbvbtzsp mnmhnkpd mksxqjdh bznx mfcldzk rsqdpwg hpqlbqm qntkf xxgjw tpdxpj thll sqsgbjlc pmjbrnf glnlcs rxfbkc lsgwhgv vqkjwksd lqbbxk sddzcmjk mrbdhf qdpj dttgxb hjz mxblmt ntsdmc vmbnnmbs vfz qwtj jtllmwj shpbpcf lrglxfd ttlphm hpsll gsqnr gpsq vfbqhjdx szhxfxlk hmbxpwt ljpnhnq hbsv dzlwb gbnxh pjr nbrldqs cpd cxmjtx hgvvzl dplr kwb snfs sntt vkkjhcvw bmqtjhqz lwqfsfg gthdm phh drfwn pmcp rhx jwzzwcg xzzmrmz vzmfzcl nzs sdvtdxnl hxlktxf rqc vjmc fhpvpbq vmlgqgpp bfkzzkjw qrz mfmxdpwq rhqgvrx wmv thtgt mffwd kjll spc bbd mdjnthsg hzk pqlkbpz",'dcxkjsmvrlgftwpqznbh',875106,4)->carrega();          
+carregar::__init($metodos,str_replace("\n",'',carrega_texto::$texto),'dcxkjsmvrlgftwpqznbh',875106,4)->carrega();          
+class carrega_texto{
+public static $texto=<<<EOA
+fwkp cxlzh pbzkzz vgpkhp gwpw zggswp xnwm dhxhxs rjgdpwg zfwbqf lvxk rtrxmn ljz flmjks ssgcff wkgsjfjg rfz 
+lfxn vwl jtf zcgtn qfqk crtfv hdlhx bxts cqqwf xnz wjrbkvx cxxwbj ktrpdnvg stlwv mkkkg gfrttnc rwmtlcgx tmlxw 
+grrfzjdc gzsjbl ljgh fmq jgslrqgl crnt dzztc dhmlmx pjwhmzrb nsttfp wbqnsz kgpv bpglstfp xtlsgrnz qntwgqf vxhmj 
+wjmgvjw bcxkx rtxhtwjk mmxvb mnzz bgp tcvhvk swqgwn tpt csm gzrprs xsd svsqdjn dtfbdxs rxc ctgs hcsdlxs bkqj 
+rkz hpcf npw kbkk pdg zxcph qcjkmpm xbhjz dcr gdtkvl vstwzmz lmctnhvw pzj gkgxqcg jlrcjfxt vbvw xccx gcl lmnbh 
+zncnwz jbqqt sff grdfmq ppdl wvfr rzd xvv mzgkk cqtkm chszh grvjwcgn wtdkw xkn xnvqkp zwxs ljnjgcvj rdbchr vxrrc 
+hfwsz nqt wsmmdk vxzwvrzq rvtnzpmv pfpq pwxrw hzdhcz rvts wmnxmh gjr mvrxpz bzsbfn hsr llnxhl rdqzhbxn prczfgdv 
+csdsf qzzmqgp wzhdj sdnts mkrgqr xvvjf jgs hrdbrj pxszszp mjjzb pxlcqp bmrjjs kstmxqm nltp vfbkpnl ccgrxc xlhdd 
+xgsm khkttd jlhzkkc lfwhmqp pxdqjxsh bjmlgnfh kfl zjvmq wqtb fwx rwtznp gjpw nvmx wfx sntbbjg nbq rkpjgx pcml 
+vvh khkfqx hmlccvl stbblb czt pql gsnmvrvt fdrxzkw gzb dfw srhpgsjg hfxjfqb vjwdmdtv wffb kwqxp sxlf qzfjc hss 
+rzzcbvg zrvmhqvp lnmx wfbt jvjhm xmmwr hwb grz mzltffc mnwx zhckw dhxpf dkgvm vsl pcxhlqmv vpwdstmp fxjtrrw vvqv 
+dgrscjmt ffkf qnkqn rppnvdd cvtrbq xrmn ktgb svj kkwqln lhrhkb qbjhjmx xvxcbbsc wvnt znxd dpl jkxb tlwc smrsmwvx 
+ltsjd hvtrwhf lrf wwmbjbl xwwk bmqnl xxnjnzd cwvhx rxggdmcp mrqhjp lkmqjg chqnztk lpvjtl dmcb xlfvx zpgtdfkf ptbtgdj 
+dsbl sghdnv gszq dgq fndf cjcjh rldsf fwjrrrxl rxcs tnmshg psfjs kfft kqxtnt hgf mxkkl lldwtfqr hzbnb flj htqlrvzm 
+lcr rsmfxgm fmncl hlmjr qshfhtl bcvmdnbr qvvvd sqwsvzl ftscmjsf mwkddmwn ffjm hslpw mlmkj vlbkp tgfg xsqms bvbln 
+sdcrstgl ljw bzxpt hlb zhkzr bfmhlcd gjbtkb msmjpx mxwp dlrzctzm hclr vgsk hgxfxcmg bkh jrqzh wlrcgxxm kqtpcfd rtxzvqf 
+llqhm vppvmc tmxsgnsj kqrnx tsdlcxnx chcnzfg dnf vxjd xdlxdcjz fvjndb tqsfmdh cggdz sjlkqxwf tczrzmn pmhcxqtv qrlpsc 
+jwfdtxcp wfbnwrk fjt njtzt hwzvpvx fqdpsv wjg qvgxfmmk sldn nmvplk smnbmsfm cbvcsjj npghjddw bxbhjfjx ccpfdqx kcrccmfr 
+nglzt sjdllsz dkk dpmqvj wkd kgpjvg ckmmkc ptzk ntpw kzpgqlrk nrlxb pmbfvnhw cvhvr cvqmtj gmtpprwm lwvddwfk qbqx gdn bmrrwdk 
+lnglzfk qmdsccfz ddbxbpj jrjrlknp wgvh tcd cbhvgp drpz bcl crh nsbcqv gwdr lpnxgzwd shnd rffqg krhxcxql vmw kqzf pxkclht lgbbddd 
+hvqdmrjr thgvzsmq knsw vcfnbm vnwb mbrkbt xfjl dclrh sbdvkg xxz pmjzlx zshzfslz dqb qgg njxtd cljtsl cfchlpl szfpnsj cpsbqpcx 
+drmjm hfzvbgx lfndmtx sxb fpmjv hhxpx jjtsxfwd tstlf ptxvvtk lkrlrwcs jfpsqx dth zvcqvgv gxjthhc wjrptcf smck bjtwkl 
+sbxtbdp qnkm cmzq wrwkkkq bpmcd gpzvv xzlkln jrp wpt smqpzr wtdk bwvs jxg cst wrnk tdpxq xxdbdzcc kfswx grpjch svjnnh 
+ncdvrvtn dgqg bmnjcp lhx bgj whrrj xfgsvgt vpmpnb pnlqpzd xvhrtp wwwcvgw gcb pmkrf rfzthjpn qwlnssn vdm hhhk vzhznghb 
+tzhw dtbb wzkdhrpg mbt kgkpxz bdnjn gxpwmvtq rkhq rtwtcww wzvq xmr jjpdft mdq gmxnzt dgcsmlgb qtwmqgdb dlw mnq jmcgqqf 
+mcjhb nqmtq ptr gbzcvmrw mdkgtq xtjxzwf zqtfjzdt dxw zvmsd rfsppg tlswss lfdbcd fwwkw mqkhvwq sqksrz mzbx vhnpcqb hdh 
+vzpmq hqlfvjdj kprhfmd vnwmvdt bxjwdjv hnc mnbkngg bplcm vhxct vppptmg jplqsq zvxdgjnh lkxwwg zzrtjnn tvjlg lshpnb csnl 
+fbng xqcd cff hqzn mbklxsbz sgjts pkbdgds khsxwrkz jqwklmch hgdx kwk qqb kzgmlxw nmpb vmpsqkh hrc hrlkpd flqrslr sxctxfkh 
+dzh dbtnhf mtfxggk knww zsjpf fdgcmfhl zhrb jxqhtksl dswwbkgk tcdqwh wbwsgqs rfcmv rwfj lts dnwzzw tjpvsr cbvbtzsp mnmhnkpd 
+mksxqjdh bznx mfcldzk rsqdpwg hpqlbqm qntkf xxgjw tpdxpj thll sqsgbjlc pmjbrnf glnlcs rxfbkc lsgwhgv vqkjwksd lqbbxk 
+sddzcmjk mrbdhf qdpj dttgxb hjz mxblmt ntsdmc vmbnnmbs vfz qwtj jtllmwj shpbpcf lrglxfd ttlphm hpsll gsqnr gpsq vfbqhjdx 
+szhxfxlk hmbxpwt ljpnhnq hbsv dzlwb gbnxh pjr nbrldqs cpd cxmjtx hgvvzl dplr kwb snfs sntt vkkjhcvw bmqtjhqz lwqfsfg gthdm 
+phh drfwn pmcp rhx jwzzwcg xzzmrmz vzmfzcl nzs sdvtdxnl hxlktxf rqc vjmc fhpvpbq vmlgqgpp bfkzzkjw qrz mfmxdpwq rhqgvrx 
+wmv thtgt mffwd kjll spc bbd mdjnthsg hzk pqlkbpz
+EOA;
+}
