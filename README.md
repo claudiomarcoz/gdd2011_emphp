@@ -55,35 +55,33 @@ Resposta: No Texto B, há __91__ números bonitos distintos (atenção!).
 
 
 ```php
- class processa{
-	private $alf_google,$alfabeto,$tr;
-function __construct($alf_google='dcxkjsmvrlgftwpqznbh',$alfabeto='0123456789')
-{
-$this->alf_google= str_split($alf_google);
-$this->alfabeto=str_split($alfabeto.'abcdefghijklmnopqrstuvwxyz');
-$this->tr= array_combine($this->alf_google,array_slice($this->alfabeto,0,(count($this->alf_google) )));
-$this->alfabeto = array_flip($this->alfabeto);
-}
-public static function __init()
-{
-	return new self();
+class processa{
+	private $alf_google;
+    function __construct($alf_google='dcxkjsmvrlgftwpqznbh')
+    {
+    $this->alf_google = (is_array($alf_google)) ? array_flip($alf_google) : array_flip(str_split($alf_google));
+    }
+    public static function __init($alfa='dcxkjsmvrlgftwpqznbh')
+    {
+	return new self($alfa);
 	}
-public function traduz($letra)
-{
-return $this->alfabeto[$this->tr[$letra]];
-}
-function mudaBase($numero,$orientacao=0)
-{
+    public function traduz($letra)
+    {
+    if($this->alf_google[$letra]) return $this->alf_google[$letra];
+     else throw new Exception('Numero nao consta da tabela de traducao');
+    }
+    function mudaBase($numero,$orientacao=0)
+    {
 	$res=0;
-for($i=strlen($numero),$o=0;$i>=0;$i--,$o++)
-{
-	if($orientacao > 0) {$for=$i;}else{$for=($o-1);} 
-    $res += ($this->traduz($numero[$i]) * pow(20,($for)) );
-};
-return $res;
+    for($i=(strlen($numero) - 1),$o=0;$i>=0;$i--,$o++)
+    {
+	    $for = ($orientacao)? $i:($o); 
+        $res += ($this->traduz($numero[$i]) * pow(20,($for)) );
+    }
+    return $res;
+    }
 }
-}
-
+// uso processa::__init('dcxkjsmvrlgftwpqznbh')->mudaBase($numero,"invertido"); ou $pro = processa::__init('dcxkjsmvrlgftwpqznbh'); e $pro->mudaBase();
 ```
 
 
