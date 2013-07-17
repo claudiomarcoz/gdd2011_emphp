@@ -52,7 +52,7 @@ Resposta: No Texto B, há __91__ números bonitos distintos (atenção!).
 #
 "outra dica aqui fica por conta do uso base convert apesar da conversao de bases ser simples ex:"
 
-`class processa{
+<?php class processa{
 	private $alf_google,$alfabeto,$tr;
 function __construct($alf_google='dcxkjsmvrlgftwpqznbh',$alfabeto='0123456789')
 {
@@ -79,7 +79,8 @@ for($i=strlen($numero),$o=0;$i>=0;$i--,$o++)
 };
 return $res;
 }
-}`
+}
+?>
 
 
  
